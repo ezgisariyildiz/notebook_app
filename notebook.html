@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Book</title>
+</head>
+<body>
+    <h1>NoteBook App</h1>
+    
+    <form action="/" method="post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content"></textarea><br><br>
+        <button type="submit">Add Note</button>
+    </form>
+
+    <hr>
+
+    <h2>Notes</h2><img src="indir.jpg" width="20" height="20">
+    <ul>
+        {% for index, note in enumerate(notes) %}
+            <li>
+                <strong>{{ note.title }}</strong><br>
+                {{ note.content }}<br>
+                <small>{{ note.date }}</small><br>
+                <form action="/delete" method="post">
+                    <input type="hidden" name="index" value="{{ index }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% end %}
+    </ul>
+</body>
+</html>
+
+
+
+
+
